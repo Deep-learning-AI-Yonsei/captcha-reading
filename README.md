@@ -1,4 +1,4 @@
-# captcha-reading
+# Captcha Reading
 
 ## Project Statement
 The project aims to develop an advanced model capable of recognizing and interpreting characters in CAPTCHA input. By overcoming the challenge of distinguishing between distorted or obscured characters, which serve as an automated entry prevention mechanism on websites, this model seeks to push the boundaries of current AI capabilities in pattern recognition.
