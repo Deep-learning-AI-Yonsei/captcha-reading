@@ -3,7 +3,7 @@ import torch
 from PIL import Image
 from torch.utils.data import Dataset, DataLoader
 
-from module.data_processing.datasplit import get_file_names
+from captcha.data_processing.data_split import get_file_names
 
 # Dataset and DataLoader
 class CaptchaDataset(Dataset):
@@ -34,11 +34,11 @@ class CaptchaDataset(Dataset):
 
         return img, label_encoded
     
-def load_data(transform, batch_size, max_dataset_size):
+def load_data(dataset_dir, transform, batch_size, max_dataset_size):
     # Creating dataset and data loader instances
-    train_dataset = CaptchaDataset("./dataset/train", max_dataset_size, transform=transform)
-    val_dataset = CaptchaDataset("./dataset/val", max_dataset_size, transform=transform)
-    test_dataset = CaptchaDataset("./dataset/test", max_dataset_size, transform=transform)
+    train_dataset = CaptchaDataset(dataset_dir + "/train", max_dataset_size, transform=transform)
+    val_dataset = CaptchaDataset(dataset_dir + "/val", max_dataset_size, transform=transform)
+    test_dataset = CaptchaDataset(dataset_dir + "/test", max_dataset_size, transform=transform)
 
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4, pin_memory=True)
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=4, pin_memory=True)

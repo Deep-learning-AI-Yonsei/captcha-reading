@@ -20,3 +20,10 @@ class CaptchaResNet(nn.Module):
         # Reshape to have the correct output dimensions
         x = x.view(-1, self.sequence_length, self.num_classes)
         return x
+    
+
+def save_param(state_dict, dir):
+    import time
+    tm = time.localtime(time.time())
+    file_name = f'/resnet18_{tm.tm_mday}_{tm.tm_hour}_{tm.tm_min}.pth'
+    torch.save(state_dict, dir + file_name)

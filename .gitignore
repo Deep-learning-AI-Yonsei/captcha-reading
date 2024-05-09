@@ -1,2 +1,4 @@
 data
-dataset
+__pycache__
+weights
+captcha.egg_info
