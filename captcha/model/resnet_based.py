@@ -22,8 +22,8 @@ class CaptchaResNet(nn.Module):
         return x
     
 
-def save_param(state_dict, dir):
+def save_param(epoch, state_dict, dir):
     import time
     tm = time.localtime(time.time())
-    file_name = f'/resnet18_{tm.tm_mday}_{tm.tm_hour}_{tm.tm_min}.pth'
+    file_name = f'/resnet18_{epoch}_{tm.tm_mday}_{tm.tm_hour}_{tm.tm_min}.pth'
     torch.save(state_dict, dir + file_name)

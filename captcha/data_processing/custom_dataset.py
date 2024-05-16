@@ -13,7 +13,7 @@ class CaptchaDataset(Dataset):
         self.image_files = get_file_names(img_dir)[:max_dataset_size]
         self.characters = '0123456789abcdefghijklmnopqrstuvwxyz'  # Include both digits and letters
         self.char_to_int = {char: idx for idx, char in enumerate(self.characters)}
-
+   
     def __len__(self):
         return len(self.image_files)
 
@@ -24,7 +24,7 @@ class CaptchaDataset(Dataset):
 
         if self.transform:
             img = self.transform(img)
-
+        
         # Extracting and encoding labels
         label = img_name.split('.')[0]  # Assuming label is before an underscore
         label_encoded = torch.zeros(len(label), len(self.characters))
