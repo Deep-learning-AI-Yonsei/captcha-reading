@@ -43,7 +43,7 @@ def visualize_and_save_predictions(model, data_loader, device, characters, save_
         plt.title(f'Predicted: {predicted_label}\nActual: {actual_label}')
         plt.axis('off')
         save_path = os.path.join(save_dir, f'prediction_{idx + 1}.png')
-        plt.savefig(save_path)
+        plt.savefig(save_path, bbox_inches='tight', pad_inches=0)
         plt.close()
 
 def evaluate_model(model, data_loader, device, characters):
