@@ -49,9 +49,9 @@ By switching the batch size, learning rate, and number of epochs we will find th
 ### ResNet-18 Based Model
 We started with a model based on ResNet-18, which is long used and has a low computational cost. We took 6 different tests, each test had made differences in the number of epochs, learning rate, and batch size.
 
-Above the others, test D, which increased the batch size to 32, shows the highest Accuracy. 
+Above the others, the test increasing the batch size to 32, shows the highest Accuracy. 
 
-We did not expect the visualized data to expand from the original image as shown in figure 1, which may reduce the accuracy. Therefore we added padding so that the size of our data could be fixed. 
+We did not expect the visualized data to expand from the original image, which may reduce the accuracy. Therefore we added padding so that the size of our data could be fixed. 
 ### ViT Based Model
 ViT is excellent at learning the global features of the given images, which may make it a better model for interpreting CAPTCHA images. We attempted to learn and interpret CAPTCHA images using a ViT based model. 
 
