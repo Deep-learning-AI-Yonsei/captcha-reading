@@ -2,6 +2,7 @@ import os
 import torch
 from PIL import Image
 from torch.utils.data import Dataset, DataLoader
+from torchvision import transforms
 
 from captcha.data_processing.data_split import get_file_names
 
@@ -44,3 +45,27 @@ def load_data(dataset_dir, transform, batch_size, max_dataset_size):
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=4, pin_memory=True)
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=4, pin_memory=True)
     return train_loader, val_loader, test_loader
+
+# Function to calculate padding
+def get_padding(image):
+    width, height = image.size
+    if width > height:
+        padding = (0, (width - height) // 2, 0, (width - height) - (width - height) // 2)
+    else:
+        padding = ((height - width) // 2, 0, (height - width) - (height - width) // 2, 0)
+    return padding
+
+# Custom transform to add padding
+class PadToSquare(object):
+    def __call__(self, image):
+        padding = get_padding(image)
+        return transforms.functional.pad(image, padding, fill=0, padding_mode='constant')
+    
+def get_custom_transform():
+    transform = transforms.Compose([
+        PadToSquare(),
+        transforms.Resize((224, 224)),
+        transforms.ToTensor(),
+        # transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    ])
+    return transform
