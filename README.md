@@ -18,6 +18,7 @@ Curriculum Learning 1
 - **Train the model using individual characters to enhance its understanding of characters.**
 - **After training the model with individual characters, further train it to enhance its ability to recognize words.**
 - **To recognize distorted words, additional training with relevant datasets is necessary.**
+
 Curriculum Learning 2
 - **Collecting diverse CAPTCHA image datasets through Kaggle. CAPTCHA images are classified into three main stages based on the level of recognition difficulty.**
 - **The first stage focuses on relatively simple alphabet recognition, while the second stage transitions to word formation recognition.**
